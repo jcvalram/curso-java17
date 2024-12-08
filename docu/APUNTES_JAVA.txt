@@ -1,0 +1,450 @@
+
+CURSO JAVA
+##########
+
+VARIABLES
+#########
+
+Tipos de variabales:
+
+- Variables de Clase
+  Son las variables que se definen como atributos de clase.
+- Variables locales
+  Son las variables que se definen dentro de un método.
+
+Inferencia de Tipos:
+A partir de la versión 10 de Java podemos usar la palabra reservada "var" para
+definir variables y Java infiera el tipo de dato a partir del valor que le damos
+a la variable. Sólo se pueden usar al definir variables locales. Ejemplos: 
+  
+  var numero = 10;
+  var cadena = "Cadena nueva";
+
+Reglas para definir variables:
+- Primera caracter puede ser una letra en minúscula, "$" ó "_" (guión bajo).
+- No se puede utilizar números o caracteres especiales como primer caracter.
+- No usar nombres de palabras reservadas en Java.
+
+TIPOS PRIMITIVOS
+################
+
+Tipos Enteros: 
+- byte (8 bits), valor por defecto 0
+- short (16 bits), valor por defecto 0
+- char (16 bits), valor por defecto \u0000
+- int (32 bits), valor por defecto 0
+- long (64 bits). valor por defecto 0
+
+Tipos Flotantes: 
+- float (32 bits), valor por defecto 0.0
+- double (64 bits), valor por defecto 0.0
+
+Tipo Boolean:
+- boolean (true/false), valor por defecto false
+
+CLASES Y OBJETOS
+################
+
+Una clase es un plantilla que representa algo en el mundo real.
+Posee atributos y métodos.
+Por norma general un fichero .java contiene una clase, pero hay casos en los que
+se define más de un clase dentro del mismo archivo .java. En este caso la primera clase
+tendrá un tipo de modificador de acceso mientras que la otra clase ya no.
+Y esta última sólo será accesible para el propio fichero .java y el paquete donde se
+encuentre.
+
+A partir de la clase se crean objetos llamados también instancias.
+Para poder crear un objeto es necesario usar la palabra reservada "new".
+
+Por defecto el compilador agrega el constructor vacío de una clase si no
+tiene ningún constructor con parámetros.
+
+Ejemplos:
+
+ Persona persona1; 
+ Con esto sólo declaramos una variable de tipo Persona, reservando un espacio 
+ en memoria para esta variable almacenándolo.
+ 
+ Persona persona1 = new Persona();
+ El constructor crea un objeto de clase inicializándolo y reserva memoria para
+ guardarlo y devuelve la referencia del objeto y lo asigna a persona1.
+
+this -> apunta al objeto que se ha creado.
+
+MEMORIA
+#######
+
+- Memoria Stack: Es la memoria donde se almacenan las variables locales cuando se crean 
+y destruyen cuando finaliza la ejecución del método.
+- Memoria Heap: Es la memoria donde se almacenan las variables det tipo Object. Es el 
+Garbage Collector quien se encarga de eliminar los objetos cuando sea posible.
+
+PASO POR VALOR
+##############
+
+Es el paso del valor de una variable a un método como argumento. Donde realmente se pasa
+una copia del valor de la variable. Si se cambia el valor de la variable dentro del método
+no se verá afectado la variable que está fuera del método que se pasó por valor.
+
+PASO POR REFERENCIA
+###################
+
+Es el paso de referencia de un objeto a un método como argumento. Si se modifica el objeto 
+dentro del método, se verá reflejado fuera de él, ya que la variable local hace referencia 
+a la misma dirección de memoria del objeto que tiene la variable inicial de dicho objeto.
+
+ENCAPSULAMIENTO
+###############
+
+El estado de un objeto está generalmente oculto y a esto se le conoce como encapsulamiento.
+Java utiliza "modificadores de acceso" para definir esta tarea.
+
+Metodo toString:
+Permite imprimir los valores de cada atributo del objeto.
+Si se imprime un objeto desde System.out.println, no hace falta llamar al método toString
+ya que si el objeto lo tiene implementado se ejecuta automáticamente.
+
+Contexto estático: 
+Carga de clases, no puede acceder al contexto dinámico. Con la palabra reservada "static" 
+en atributos o métodos, se asocian con la clase y no con el objeto. Estos atributos o
+métodos podrán ser accesibles desde cualquier clase.
+
+Contexto Dinámico: Carga de objetos, si puede acceder al contexto estático. Cuando se 
+definen atributos o métodos sin "static" se asocian al objeto.
+
+HERENCIA
+########
+
+Sólo existe una herencia simple, con la palabra reservada "extends" sólo se puede heredar
+de una sola clase.
+Con la palabra reservadad "super" se hace referencia a la clase "padre".
+
+Sobrecarga de Constructores
+###########################
+
+Cuando hay más de un constructor se habla de "Sobrecarga de constructores"
+
+Sobrecarga de Métodos
+#####################
+Es definir dos o más veces el método a utilizar con el mismo nombre, con la diferencia que
+las va distinguir que será el número de argumentos de cada uno.
+El tipo de modificador de acceso siempre debe ser el mismo, no ser uno public y otro private, 
+sin embargo el tipo de retorno si que puede cambiar al igual que los tipos de los argumentos.
+
+Palabra FINAL
+#############
+
+Uso de la palabra reservada "final":
+
+- En variables: Evita cambiar el valor que almacena la variable. Se usa principalmente para
+  definir constantes junto con el modificador de acceso static.
+- En métodos: Evita que se modifique la definición de un método desde una subclase.
+- En clases: Evita que se cree una subclase.
+- En objetos: Evita modificar la referencia de memoria del objeto.
+
+ARRAYS
+######
+
+Para definir un array se debe de indicar el tipo (primitivo u objeto), el nombre y los
+corchetes para indicar que se trata de un array. Hay que indicar el tamaño que va tener obligatoriamente.
+Ejemplos:
+
+- int edades[] = new int[3];
+Con 'new' estamos creando un objeto y con 'int[3]' estamos indicando que el Array estará 
+formado por elementos de tipo int.
+
+- int[] edades = new int[10];
+Los corchetes se pueden poner antes o después del nombre del array.
+
+- Persona personas[] = new Persona[5];
+Crea un Array que está formado por elementos de tipo Persona.
+
+- String[] frutas = {"Naranja", "Platano", "Uva"};
+Podemos crear un Array con elementos cargados.
+
+MATRICES
+########
+
+Se define un Array donde cada elemento también es un Array, proporcionando una matriz de
+N x M. Ejemplos:
+
+int edades[][] = new int[3][2];
+
+String frutas[][] = {{"Naranaja", "Limon"}, {"Fresa", "Mora", "Kiwi"}};
+
+Persona personas[][] = new Persona[2][3];
+
+DISEÑO DE CLASES
+################
+Se puede diseñar con UML desde la página umletino.com, es gratuito.
+
+ARGUMENTOS VARIABLES
+####################
+Es cuando vamos a pasar argumentos a un método sin necesidad de especificar el número de
+argumentos que va recibir. Se define en el método indicando el tipo de los argumentos
+variables y a continuación ponemos tres puntos suspensivos, dejamos un espacio y le damos 
+un nombre. Ejemplo:
+
+ private void imprimir(int... numeros) {..} -> De esta forma se define los argumentos variables.
+
+Hasta el momento que se ejecuta el código no se define en ese momento cuántos argumentos
+recibe el método. Siguiendo el ejemplo se maneja de manera interna como un Array de tipo int.
+Se puede definir métodos con argumentos definidos y variables, siempre que el argumento 
+variable sea el último parámetro. Ejemplo:
+
+ private static void variosParametros(String nombre, int... numeros) --> OK
+ private static void variosParametros(int... numeros, String nombre) --> ERROR de compilación
+
+ENUM
+####
+Una clase que contiene varios elementos definidos de una enumeración. 
+Los elementos del Enum por defecto son estáticos, públicos y finales. También podemos definir
+atributo dentro de los enums.
+Se definen los atributos privados y un constructor que se asocia a cada elemento del enum.
+
+BLOQUES INICIALIZACION DE UNA CLASE
+###################################
+Inicializacion estática, se ejecuta antes del contructor la primera vez que se carga 
+en memoria la clase.
+
+	static {
+		System.out.println("Ejecución bloque estático");
+		++Persona.contadorPersonas;
+		//idPersona = 10; Da error al no ser estático la variable
+	}
+	
+Inicialización No estática, se ejecuta antes del constructor cada vez que se crea un 
+objeto de la clase.
+ 
+	{
+		System.out.println("Ejecución bloque NO estático");
+		this.idPersona = Persona.contadorPersonas++;
+	}
+
+Lo normal es usar los constructores, pero es interesante saber cómo funcionan estos bloques.
+
+AUTOBOXING Y UNBOXING
+#####################
+Los tipos primitivos tienen una clase asociada llamada clase Wrapper (Envolvente). 
+Ejemplo clases envolventes:
+
+ - int -> Integer
+ - long -> Long
+ - float -> Float
+ - double -> Double
+ - byte -> Byte
+ - char -> Character
+ - short -> Short
+ 
+ Las clases envolventes, ofrecen métodos para realizar conversiones de tipos.
+ 
+Autoboxing: Envuelve el tipo primitivo en un object. Ejemplo: Integer entero = 10;
+Unboxing: Desenvuelve un objeto a tipo primitivo. Ejemplo: int entero2 = entero;
+
+MODIFICADORES DE ACCESO
+#######################
+
+Los modificadores de acceso aplican tanto a clases, atributos, métodos y constructores.
+Los únicos modificadores que no aplican para clases son: protected y private.
+Son cuatro modificadores de acceso y se detallan desde el menos restrictivo al más 
+restrictivo:
+
+- public
+  Permite el acceso total desde cualquier clase.
+- protected
+  Permite el acceso a los atributos, métodos y constructores tanto a la propia clase como
+  a las clases hijas aunque estas se encuentren en otro paquete. Este modificador está 
+  pensado para temas de herencia.
+- default
+  También llamado "package", permite el acceso desde otras clases pero sólo si están en el
+  mismo paquete. Desde otros paquetes no es accesible.
+- private
+  Permite el acceso a los atributos, métodos y constructores sólo desde la propia clase.
+
+SOBREESCRITURA METODOS
+######################
+La sobreescritura de métodos está relacionado con la herencia de clases.
+La sobreescritura significa que un método en la clase hija modifica el comportamiento del 
+método de la clase padre.
+Cuando se sobreescribe un método, su modificador de acceso no puede ser más restrictivo que
+el que tenía en la clase padre, pero si puede ser menos restrictivo. Ejemplo:
+
+protected void calcular() (Clase padre)
+Sobreescrituras posibles en clase hija:
+- public void calcular()
+- void calcular()
+- protected void calcular()
+
+No se podría poner un modificador de acceso private.
+
+POLIMORFISMO
+############
+También está relacionado con la herencia de clases. 
+Polimorfismo significa múltiples comportamientos.
+
+INSTANCE OF
+###########
+Instancia de cierto tipo de clase. La palabra reservada 'instanceof' se usa para poder saber el 
+tipo de objeto al que está apuntando una variable.
+Se debe realizar la comprobación de tipos desde las clases más específicas hasta la clase
+más genérica.
+
+CONVERSION DE OBJETOS
+#####################
+Es la conversión que se realiza sobre un objeto para que apunte a otro tipo de clase que 
+comparte herencia con respecto a la que está apuntando.
+El proceso de conversión de un objeto de tipo clase padre a una clase hija se llama 
+Downcasting, para este tipo de conversión hay que indicar de forma explícita el tipo de 
+clase a la que se va realizar la conversión.
+El proceso de conversión de un objeto de tipo clase hija a una clase padre se llama 
+Upcasting, para este tipo de conversión no se requiere especificar el tipo de clase de la
+conversión.
+Ambos procesos se llaman de forma común como Casting de clases.
+Los errores ClassCastExeception se producen en tiempo de ejecución.
+
+CLASE OBJECT
+############
+Es la clase padre de todas las clases en Java. Tiene algunos métodos son:
+
+- toString()
+- equals(): Nos permite comparar el contenido de dos objetos para saber si son iguales.
+- hashCode(): Genera un entero único calculado a partir de los atributos del objeto y
+  una vez obtenido el número se puede comparar con el del otro objeto para saber si 
+  son iguales.
+
+Si se implementa el método hashCode() también debemos implementar el método equals().
+
+CLASES ABSTRACTAS
+#################
+
+Las clases abstractas de definen con el uso de la palabra reservada 'abstract', pueden tener
+varios métodos, pero al menos uno de ellos debe ser asbtracto, definido también con 'abstract'.
+Las clases asbtractas no se pueden instanciar, sólo se puede heredar de ellas y se debe
+implementar los métodos asbtractos que contenga.
+Si en una clase normal, se define un método abstracto, automáticamente la clase se convierte
+en clase abstracta.
+
+INTERFACES
+##########
+Una interfaz es un nuevo tipo de clase, donde todos los métodos de la clase son abstractas,
+es decir, no están implementados y además son públicas. El compilador de Java internamente 
+le agrega las palabras reservadas 'public asbtract' y por tanto no hace falta especificarlo.
+Si se definen atributos en la interfaz, el compilador los tratará como constantes, añadiendo
+internamente las palabras reservadas 'public static', y por tanto no haría falta especificarlo
+al definir el atributo.
+La diferencia entre una clase abstracta y una interfaz, se debe evaluar teniendo en cuenta
+las características que definen a la clase, en ese caso se trata de una clase abstracta.
+Y si la clase se rige por comportamiento o funcionalidad, se trata de una interfaz.
+También existe la posibilidad de herencia, pero únicamente puede heredar de otra interfaz.
+Las interfaces producen el bajo acoplamiento entre clases y alta cohesión.
+
+JAVA BEANS
+##########
+Una clase de tipo Bean debe de cumplir una serie de características:
+- Constructor vacío
+- Los atributos de la clase deben ser privados
+- Cada atributo debe tener su respectivo get y set asociado.
+- Deben implementar la interfaz Serializable, que permite la serialización.
+
+La serialización consiste en la transformación a bits (ceros y unos) para poder transferir 
+el objeto entre máquinas.
+
+MANEJO EXCEPCIONES
+##################
+
+printStackTrace(): Muestra la pila de excepciones que ocasionó la excepción.
+La clase Exception es la clase padre de todas las excepciones. El compilador Java
+obliga a utilizar el bloque try.catch para las excepciones que heredan de esta clase.
+Para las excepciones que heredan de la clase RuntimeExcpetion, el compilador Java 
+NO obliga a poner el bloque try-catch.
+La excepciones de tipo NullPointerException también se realiza en tiempo de ejecución 
+al igual que las excepciones RunTimeException.
+Podemos crear nuestra propia clase de excepción heredando de cualquiera de las clases
+antes mencionadas.
+Arrojamos una excepción con la palabra reservada 'throw' y a continuación creamos un
+nuevo objeto de la excepción que queremos lanzar. Ejemplo:
+
+ throw new OperacionException("Division entre cero");
+
+Dentro de los bloques try-catch, se pueden añadir más bloques catch con la clase de
+excpecion que lanza el código, para este caso se debería tratar primero la clase de
+excepción de menor rango y después la más genérica. Ejemplo:
+
+ try {
+	resultado = Aritmetica.division(10, 0);
+ } catch(OperacionException oe) {
+	System.out.println("Ocurrió un error de tipo OperacionExcception");
+ } catch(Exception e) {
+	System.out.println("Ocurrio un error de tipo Exception:");
+ }
+
+También existe un bloque con la palabra reservada 'finally', este bloque siempre se va 
+a ejecutar independientemente si existe una excepción o no.
+Este bloque finally se suele usar para cerrar recursos, conexiones a BBDD, cerrar 
+archivos, etc. Ejemplo:
+
+   finally {
+	  System.out.println("Se cierra conexión a BBDD");
+	  conexionBD.close();
+   }
+
+¿Qué tipo de excepción debemos usar en nuestro código, Exception o RuntimeException?
+Se recomienda usar excepciones de tipo RuntimeException porque facilita que el código
+sea más limpio sin tantos bloques try-catch, aunque al lanzar las excepciones se 
+rompa la ejecución del código.
+Lo ideal sería incluir bloques try-catch de las excepciones que estemos seguros que van 
+a suceder, por tanto debería existir un equilibrio entre Exception y RuntimeException.
+
+API COLECCIONES
+###############
+
+El API de Colecciones se divide en dos grandes Interfaces:
+- Interface Colletion: Es la clase padre de las interfaces Set y List
+- Interface Map.
+
+Interface List: (Listas)
+Las listas que puede crecer de forma dinámica añadiendo elementos y mantienen el orden
+en el que se van introduciendo.
+Tiene las implementaciones: ArrayList, LinkedList y Vector.
+
+Interface Set: (Conjuntos)
+Son similares a las listas, salvo que no mantienen el orden en el que se han añadido
+los elementos. Debido a esto es más rápido al añadir elementos.
+Una característica de Set es que no permite duplicar elementos, si ya existe un 
+elemento a introducir lo descarta automáticamente.
+Tiene las implementaciones: HashSet y TreeSet.
+
+Interface Map:
+Es una colección de elementos almacenados en el concepto <Key,Value>.
+En los mapas se añade un valor "v" en una key "k·, y si se añade un valor en una key
+ya existente, lo que hace es sustituir el valor para esa key. 
+Tiene las implementaciones: HashMap, LinkedHashMap, TreeMap y Hashtable.
+
+TIPOS GENERICOS
+###############
+Son tipo comodines de objetos, para no especificar el tipo que realmente se va usar.
+Existen muchas nomenclaturas. Ejemplos: 
+<E> -> representa un elemento y que generalmente se usa documentación de colecciones.
+<T> -> representa un tipo, es decir una clase.
+<K> -> representa una key usado en mapas.
+<V> -> representa un valor, también usado en mapas.
+
+Ejemplos de uso definición de tipo de clase:
+
+List<String> lista = new ArrayList<>();
+En este caso definimos una lista de tipo String indicándolo entre '<>' y luego se crea
+el objeto usando la clase implementadora. En el lado derecho no es necesario poner
+el tipo porque el compilador infiere el tipo que está definido en el lado izquierdo, a 
+esto se le llama "inferencia de tipos".
+
+void imprimir (Collection <? extends Object> coleccion);
+En este caso el método imprimir recibe un parámetro de tipo Collection que almacena 
+elementos de un tipo que extiende de Object, en este caso: Integer, String y Double 
+lo hacen implícitamente.
+
+MANEJO DE FICHEROS
+##################
+
+Abrir un ficher con la clase File.
+Leer de un fichero -> new BufferedReader(new FileReader(fichero));
+Escribir en un fichero -> new PrintWriter(new FileWriter(fichero, true));
